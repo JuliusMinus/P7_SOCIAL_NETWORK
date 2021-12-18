@@ -1,17 +1,17 @@
 <template>
   <div class="addpaper container">
-    <AddPaper/>
+    <AddPaper />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import AddPaper from '@/components/AddPaper.vue'
+import AddPaper from "@/components/AddPaper.vue";
 
 export default {
-  name: 'AddPaperPage',
+  name: "AddPaperPage",
   components: {
-    AddPaper
-  }
-}
+    AddPaper,
+  },
+};
 </script>

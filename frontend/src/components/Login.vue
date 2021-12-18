@@ -58,7 +58,7 @@ export default {
           sessionStorage.setItem("username", data.username);
           sessionStorage.setItem("userId", data.userId);
           sessionStorage.setItem("token", data.token);
-          this.$router.push({name: "ForumPage"});
+          this.$router.push({ name: "ForumPage" });
         })
         .catch((error) => {
           console.log(error);

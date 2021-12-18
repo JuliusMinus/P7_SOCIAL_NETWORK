@@ -1,20 +1,16 @@
 <template>
   <div class="forum container">
-    <Forum/>
+    <Forum />
   </div>
 </template>
 
 <script>
-
-import Forum from '@/components/Forum.vue'
-
-
+import Forum from "@/components/Forum.vue";
 
 export default {
-  name: 'ForumPage',
+  name: "ForumPage",
   components: {
     Forum,
-    
-  }
-}
+  },
+};
 </script>
