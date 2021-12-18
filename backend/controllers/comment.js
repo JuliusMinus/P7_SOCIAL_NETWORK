@@ -30,7 +30,7 @@ exports.getAllComments = (req, res, next) => {
 // Suppression des com //
 exports.deleteComment = (req, res, next) => {
   db.query(
-    `DELETE FROM groupomania.comments WHERE comments.id = ?`,
+    `DELETE FROM groupomania.comments WHERE id = ?`,
     [req.params.id],
     (error, result, field) => {
       if (error) {

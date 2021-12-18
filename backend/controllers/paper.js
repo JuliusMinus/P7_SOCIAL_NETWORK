@@ -49,7 +49,7 @@ exports.getOnePaper = (req, res, next) => {
 // Effacer un paper//
 exports.deleteOnePaper = (req, res, next) => {
   db.query(
-    "DELETE FROM groupomania.papers WHERE paper.id = ?",
+    "DELETE FROM groupomania.papers WHERE id = ?",
     [req.params.id],
     (error, result) => {
       if (error) {
@@ -62,9 +62,8 @@ exports.deleteOnePaper = (req, res, next) => {
 // Modifier le paper utilisateur //
 exports.modifyOnePaper = (req, res, next) => {
   db.query(
-    `UPDATE groupomania.papers SET content = ? WHERE paper.id = ?`,
-    [req.body.content],
-    [req.params.id],
+    `UPDATE groupomania.papers SET content = ? WHERE id = ?`,
+    [req.body.content, req.params.id],
     (error, result) => {
       if (error) {
         return res.status(400).json({ error });
@@ -76,7 +75,7 @@ exports.modifyOnePaper = (req, res, next) => {
 // Afficher les papers d'un utilisateur //
 exports.getUserPapers = (req, res, next) => {
   db.query(
-    `SELECT * FROM groupomania.papers WHERE paper.userID = ?`,
+    `SELECT * FROM groupomania.papers WHERE owner_id = ?`,
     [req.params.id],
     (error, result) => {
       if (error) {
