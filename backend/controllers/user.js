@@ -2,6 +2,8 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const db = require("../models/DataBase.js");
 
+const CONFIG = require("../config.js");
+
 //Inscription
 exports.register = (req, res, next) => {
   db.query(
@@ -60,13 +62,9 @@ exports.login = (req, res, next) => {
               userId: results[0].id,
               email: results[0].email,
               username: results[0].username,
-              token: jwt.sign(
-                { userId: results[0].id },
-                "RANDOM_TOKEN_SECRET",
-                {
-                  expiresIn: "8h",
-                }
-              ),
+              token: jwt.sign({ userId: results[0].id }, CONFIG.JWT_SECRET, {
+                expiresIn: "48h",
+              }),
             });
           }
         });
