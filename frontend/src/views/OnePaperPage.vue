@@ -2,7 +2,7 @@
 <div class="paper">
  <Paper :paper="paper" :btnComment="false"/> 
  
- <button class="btn-paper" v-if="isOwner(paper.owner_id)" @click="deletePaper">Supprimer la publication</button>  
+ <button class="btn-paper" v-if="canDeletePaper()" @click="deletePaper">Supprimer la publication</button>  
     <form @submit.prevent = "sendComment">
     <input
         name="content"
@@ -68,6 +68,9 @@ export default {
           
   },
   methods:{
+        canDeletePaper(){
+            return this.paper.owner_id == sessionStorage.getItem('userId');
+        },
     //method envoie de commentaire
 
         sendComment(){
