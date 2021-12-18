@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="formulaire">
     <h1>Formulaire de Connexion</h1>
     <form v-on:submit.prevent="login">
       <div class="form-group">
@@ -71,7 +71,7 @@ export default {
           if (error.response.status === 500) {
             this.message = "Erreur serveur.";
           }
-          this.message = "Connard";
+          this.message = "Utilisateur enregistré";
         });
     },
   },
@@ -79,7 +79,16 @@ export default {
 </script>
 
 <style scoped>
+.formulaire {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 form {
   width: 400px;
+}
+
+h1 {
+  font-size: 30px;
 }
 </style>

@@ -13,12 +13,12 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <router-link to="/" class="navbar-brand"
+        <router-link to="/forum" class="navbar-brand"
           ><img src="./assets/icon-left-font-monochrome-black.png"
         /></router-link>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item active"></li>
-
+          <a class="nav-link" href="#">Se déconnecter</a>
           <li class="nav-item"></li>
         </ul>
       </div>
@@ -39,7 +39,11 @@
 
 .navbar-brand {
   img {
-    height: 200px;
+    height: 300px;
   }
+}
+
+.nav-link {
+  font-size: 20px;
 }
 </style>

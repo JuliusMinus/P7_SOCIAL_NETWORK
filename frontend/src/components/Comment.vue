@@ -2,11 +2,11 @@
   <div class="card">
     <div class="card_user">
       <div class="card_profile">
-        <div class="card_profile-name">{{ comment.username }} |</div>
-        <div class="card_profile-date">posté le :{{ comment.createdAt }}</div>
+        <div class="card_profile-name">posté par {{ comment.username }} |</div>
+        <div class="card_profile-date">posté par :{{ comment.createdAt }}</div>
       </div>
       <div class="card_sm">
-        <div class="card_sm-content">{{ comment.content }}</div>
+        <div class="card_sm-content">{{ comment.text }}</div>
       </div>
     </div>
   </div>

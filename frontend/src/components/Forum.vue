@@ -1,6 +1,6 @@
 <template>
   <div class="forum">
-    <h1>Tous vos articles !</h1>
+    <h1>Voir tous les articles</h1>
 
     <router-link to="/AddPaperPage" class="btn btn-info"
       >Ajouter un article</router-link
@@ -46,6 +46,6 @@ export default {
 .forum h1 {
   font-weight: bold;
   font-style: italic;
-  font-size: 80px;
+  font-size: 40px;
 }
 </style>

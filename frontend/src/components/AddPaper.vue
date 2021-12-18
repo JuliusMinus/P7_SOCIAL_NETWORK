@@ -54,8 +54,10 @@ export default {
           Authorization: `Bearer ` + sessionStorage.getItem("token"),
         },
       }).then((res) => {
-        if (res.status === 201) console.log(res);
-        // location.href = '/ForumPage';
+        console.log(res);
+        if (res.status === 201) {
+          window.location.href = "#/Forum";
+        }
       });
     },
 

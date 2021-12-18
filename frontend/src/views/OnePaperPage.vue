@@ -1,18 +1,20 @@
 <template >
   <div class="paper">
+    <div class="card-paper">
     <Paper :paper="paper" :btnComment="false" />
 
-    <button class="btn-paper" v-if="canDeletePaper()" @click="deletePaper">
+    <button id="btn-delete" class="btn btn-warning" v-if="canDeletePaper()" @click="deletePaper">
       Supprimer la publication
     </button>
+    </div>
     <form @submit.prevent="sendComment">
-      <input
+      <input class="form-control input-lg"
         name="content"
         id="commentcontent"
         type="text"
         placeholder="Commentez ici..."
       />
-      <button class="btn_send" type="submit">Publiez votre commentaire</button>
+      <button class="btn btn-info" type="submit">Publiez votre commentaire</button>
     </form>
 
     <Comment v-for="comment in comments" :key="comment.id" :comment="comment" />
@@ -53,20 +55,22 @@ export default {
       .then((paper) => {
         console.log(paper);
         this.paper = paper[0];
+        this.loadComments();
 
         //appel api comments users
-
-        fetch(`http://localhost:3000/api/comments/${this.$route.params.id}`, {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ` + sessionStorage.getItem("token"),
-          },
-        })
-          .then((res) => res.json())
-          .then((comments) => (this.comments = comments));
       });
   },
   methods: {
+    loadComments() {
+      fetch(`http://localhost:3000/api/comments/${this.$route.params.id}`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ` + sessionStorage.getItem("token"),
+        },
+      })
+        .then((res) => res.json())
+        .then((comments) => (this.comments = comments));
+    },
     canDeletePaper() {
       return this.paper.owner_id == sessionStorage.getItem("userId");
     },
@@ -82,7 +86,9 @@ export default {
           "Content-type": "application/json",
           Authorization: `Bearer ` + sessionStorage.getItem("token"),
         },
-      }).then((res) => res.json());
+      }).then(() => {
+        this.loadComments();
+      });
     },
     // method qui efface le post
     deletePaper() {
@@ -94,21 +100,31 @@ export default {
         },
       })
         .then((res) => res.json)
-        .then((data) => console.log(data));
+        .then((data) => {
+          window.location.href = "#/Forum";
+          console.log("deleted ", data);
+        });
     },
   },
 };
 </script>
 
-<style lang="scss">
-.comment {
-  position: relative;
-  .btn-post {
-    border-radius: 25%;
-    width: 100px;
-    height: 30px;
-    background-color: rgb(231, 165, 165);
-    color: white;
-  }
+<style scoped>
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
+
+.btn-delete{
+
+  display: flex;
+  justify-content: center;
+  width:50%;
+}
+
+
+  
+
 </style>
