@@ -5,7 +5,7 @@
 </template>
 
 <script>
-// @ is an alias to /src
+
 import AddPaper from "@/components/AddPaper.vue";
 
 export default {

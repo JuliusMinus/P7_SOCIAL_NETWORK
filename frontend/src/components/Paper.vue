@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="card">
-      <img :src="paper.img" class="card-img-left" alt="photo de l'article" />
+      <img :src="paper.img" class="img-fluid img-thumbnail" alt="photo de l'article" />
       <div class="card-body">
         <p class="card-text">{{ paper.username }}/{{ paper.createdAt }}</p>
         <h5 class="card-title">{{ paper.content }}</h5>
