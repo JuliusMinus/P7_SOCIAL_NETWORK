@@ -1,20 +1,15 @@
-const mysql = require('mysql2');
+const mysql = require("mysql2");
 
-const sql = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'chercheur',
-  insecureAuth: true
-  
-});
+const CONFIG = require("../config.js");
+
+const sql = mysql.createConnection(CONFIG.DATABASE_CONFIG);
 
 sql.connect(function (err) {
   if (err) {
-    return console.error('error: ' + err.message);
+    return console.error("error: " + err.message);
   }
 
-  console.log('Connexion à la base de donnée réussie !');
+  console.log("Connexion à la base de donnée réussie !");
 });
 
 module.exports = sql;
-
