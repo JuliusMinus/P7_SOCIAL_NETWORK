@@ -33,6 +33,8 @@ export default {
 <style scoped>
 
 .card {
+  display: flex;
+  justify-content: center;
   margin-bottom: 15px;
   border-width: 3px;
   border-color: rgb(185, 213, 255);
