@@ -7,8 +7,8 @@
       </div>
       <div class="card_sm">
         <div class="card_sm-content">{{ comment.text }}</div>
-        <button v-if="canDeleteComment()" @click="$emit('askDelete', comment)">
-          Remove
+        <button type="button" class="btn btn-secondary" v-if="canDeleteComment()" @click="$emit('askDelete', comment)">
+          Supprimer mon commentaire
         </button>
       </div>
     </div>
@@ -29,3 +29,13 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+
+.card {
+  margin-bottom: 15px;
+  border-width: 3px;
+  border-color: rgb(185, 213, 255);
+   box-shadow: 0px 0px 2px 2px rgb(185, 213, 255);
+}
+</style>

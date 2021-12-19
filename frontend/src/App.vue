@@ -56,10 +56,15 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+#navbarTogglerDelo01{
 
+  height: 30px;
+}
 .navbar-brand {
   img {
+    width: 300px;
     height: 300px;
+    margin:-100px;
   }
 }
 

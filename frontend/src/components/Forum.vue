@@ -45,7 +45,7 @@ export default {
 <style scoped>
 .forum h1 {
   font-weight: bold;
-  font-style: italic;
-  font-size: 40px;
+ 
+  font-size: 30px;
 }
 </style>

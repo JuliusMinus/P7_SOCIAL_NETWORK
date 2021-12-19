@@ -1,7 +1,7 @@
 <template>
   <div>
     <form @submit="(e) => e.preventDefault()" class="newpaper">
-      <label class="titlePaper">Contenu de la publication</label>
+      <label class="titlePaper"><a>Contenu de la publication</a></label>
       <textarea
         class="form-control"
         v-model="paperContent"
@@ -9,7 +9,7 @@
         type="text"
         placeholder="Que voulez vous partager?"
       />
-      <label>Télécharger votre publication </label>
+      <label class="download"><a>Télécharger votre publication</a></label>
       <input
         class="form-control"
         name="file"
@@ -74,6 +74,22 @@ export default {
 </script>
 
 <style scoped>
+#papercontent {
+  border-width: 2px;
+  height: 70px;
+  box-shadow: 0px 0px 10px 5px #8e92a1;
+  margin-bottom: 15px;
+  }
+
+ 
+
+
+#file {
+  display: flex;
+  border-width: 2px;
+  height: 50px;
+  box-shadow: 0px 0px 10px 5px #8e92a1;
+}
 #btnSend {
   margin-top: 50px;
 }
