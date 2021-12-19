@@ -17,7 +17,6 @@ exports.register = (req, res, next) => {
         });
         //Si l'email n'existe pas encore//
       } else {
-        
         //Mot de passe bcrypt//
 
         bcrypt
@@ -45,16 +44,12 @@ exports.register = (req, res, next) => {
 };
 
 exports.login = (req, res, next) => {
-  
   db.query(
     "SELECT * FROM groupomania.users WHERE email=?",
     [req.body.email],
     (err, results) => {
-     
       if (results) {
-      
         bcrypt.compare(req.body.password, results[0].password).then((valid) => {
-          
           if (!valid) {
             res.status(401).json({ message: "Mot de passe incorrect" });
             //On crée le token//
@@ -79,7 +74,6 @@ exports.login = (req, res, next) => {
 exports.getUserProfile = (req, res, next) => {
   console.log("getUserProfile", req.params.id);
 
-
   db.query(
     "SELECT * FROM groupomania.users WHERE id=?",
     [req.params.id],
@@ -95,10 +89,7 @@ exports.getUserProfile = (req, res, next) => {
 };
 
 exports.deleteUserProfile = (req, res, next) => {
-
   console.log("Delete", req);
-
-  
 
   db.query(
     "DELETE FROM groupomania.users WHERE id=?",
@@ -107,7 +98,7 @@ exports.deleteUserProfile = (req, res, next) => {
       if (error) {
         return res.status(400).json({ error });
       }
-      return res.status(200).json(result);
+      return res.status(200).json({'status': 'ok'});
     }
   );
 };

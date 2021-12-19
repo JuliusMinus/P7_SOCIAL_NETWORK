@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light">
       <button
         class="navbar-toggler"
         type="button"
@@ -14,14 +14,18 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <router-link to="/forum" class="navbar-brand"
-          ><img src="./assets/icon-left-font-monochrome-black.png"
-        /></router-link>
+          ><img
+            src="./assets/icon-left-font-monochrome-black.png"
+            alt="logo groupomania"
+          />
+        </router-link>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item active"></li>
           <a class="nav-link" @click="logout()" v-if="isConnected()"
             >Se déconnecter</a
           >
-          <li class="nav-item"></li>
+          <a class="nav-link" @click="deleteAccount()" v-if="isConnected()"
+            >Supprimer mon compte</a
+          >
         </ul>
       </div>
     </nav>
@@ -45,6 +49,30 @@ export default {
       sessionStorage.removeItem("token");
       window.location.href = "#/";
     },
+    deleteAccount() {
+      fetch(
+        "http://localhost:3000/api/users/profile/" +
+          sessionStorage.getItem("userId") +
+          "/delete",
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ` + sessionStorage.getItem("token"),
+          },
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          if(data.status == 'ok'){
+          sessionStorage.removeItem("email");
+          sessionStorage.removeItem("username");
+          sessionStorage.removeItem("userId");
+          sessionStorage.removeItem("token");
+          window.location.href = "#/";
+          }
+          
+        });
+    },
   },
 };
 </script>
@@ -57,15 +85,12 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-#navbarTogglerDelo01{
-
+#navbarTogglerDelo01 {
   height: 30px;
 }
 .navbar-brand {
   img {
     width: 300px;
-    height: 300px;
-    margin:-100px;
   }
 }
 

@@ -14,6 +14,7 @@ CREATE TABLE `papers` (
   `owner_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(255) DEFAULT NULL,
@@ -51,6 +52,7 @@ ALTER TABLE `comments`
   ADD CONSTRAINT `fk_paper` FOREIGN KEY (`paper_id`) REFERENCES `papers` (`id`);
 
 ALTER TABLE `papers`
-  ADD CONSTRAINT `papers_ibfk_1` FOREIGN KEY (`owner_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `papers_ibfk_1` FOREIGN KEY (`owner_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
+  ALTER TABLE `papers` DROP CONSTRAINT `papers_ibfk_1`;
 

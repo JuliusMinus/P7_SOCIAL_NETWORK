@@ -64,15 +64,6 @@ export default {
         })
         .catch((error) => {
           console.log(error);
-          if (error.response.status === 404) {
-            this.message = "Utilisateur inconnu.";
-          }
-          if (error.response.status === 401) {
-            this.message = "Email ou mot de passe invalide.";
-          }
-          if (error.response.status === 500) {
-            this.message = "Erreur serveur.";
-          }
           this.message = "Utilisateur enregistré";
         });
     },
@@ -85,24 +76,22 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
 }
 form {
   width: 300px;
-  
 }
 
 h1 {
   font-size: 25px;
 }
 
-#InputEmail{
+#InputEmail {
   border-width: 3px;
   border-color: rgb(185, 213, 255);
   box-shadow: 0px 0px 2px 2px rgb(185, 213, 255);
 }
 
-#InputPassword{
+#InputPassword {
   border-width: 3px;
   border-color: rgb(185, 213, 255);
   box-shadow: 0px 0px 2px 2px rgb(185, 213, 255);
