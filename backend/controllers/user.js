@@ -4,25 +4,26 @@ const db = require("../models/DataBase.js");
 
 const CONFIG = require("../config.js");
 
-//Inscription
+//Register//
 exports.register = (req, res, next) => {
   db.query(
     `SELECT * FROM groupomania.users WHERE email = ?`,
     [req.body.email],
     (err, results) => {
-      //Verification mail//
+      //On check le mail//
       if (results.length > 0) {
         res.status(403).json({
           message: "Email existe déjà.",
         });
-        //Si l'email est disponible
+        //Si l'email n'existe pas encore//
       } else {
-        //Crypt password//
+        
+        //Mot de passe bcrypt//
 
         bcrypt
           .hash(req.body.password, 10)
           .then((cryptedPassword) => {
-            //Add to BDD +injection sql
+            //Ajouts dans la base de données//
             db.query(
               `INSERT INTO groupomania.users (username,  email, password, createdAt ) VALUES (?, ?, ?, NOW())`,
               [req.body.username, req.body.email, cryptedPassword],
@@ -44,19 +45,19 @@ exports.register = (req, res, next) => {
 };
 
 exports.login = (req, res, next) => {
-  //Search users in BDD + injection sql
+  
   db.query(
     "SELECT * FROM groupomania.users WHERE email=?",
     [req.body.email],
     (err, results) => {
-      //if users find//
+     
       if (results) {
-        //Password verification//
+      
         bcrypt.compare(req.body.password, results[0].password).then((valid) => {
-          //if not valid//
+          
           if (!valid) {
             res.status(401).json({ message: "Mot de passe incorrect" });
-            //if valid, token create//
+            //On crée le token//
           } else {
             res.status(200).json({
               userId: results[0].id,
@@ -78,7 +79,6 @@ exports.login = (req, res, next) => {
 exports.getUserProfile = (req, res, next) => {
   console.log("getUserProfile", req.params.id);
 
-  //injection sql
 
   db.query(
     "SELECT * FROM groupomania.users WHERE id=?",
@@ -95,10 +95,10 @@ exports.getUserProfile = (req, res, next) => {
 };
 
 exports.deleteUserProfile = (req, res, next) => {
-  //commande mysql
+
   console.log("Delete", req);
 
-  //injection sql
+  
 
   db.query(
     "DELETE FROM groupomania.users WHERE id=?",

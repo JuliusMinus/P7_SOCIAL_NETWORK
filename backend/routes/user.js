@@ -3,6 +3,7 @@ const router = express.Router();
 
 
 const userCtrl = require('../controllers/user');
+//Routes de L'Api pour les utilisateurs//
 
 router.post('/register', userCtrl.register);
 router.post('/login', userCtrl.login);

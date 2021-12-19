@@ -1,6 +1,6 @@
 const db = require("../models/DataBase");
 
-// Afficher tout les paper //
+// On affiche tous les articles //
 exports.getAllPapers = (req, res, next) => {
   db.query(
     "SELECT p.*, u.username FROM groupomania.papers p INNER JOIN groupomania.users u  ON u.id = p.owner_id ORDER BY p.createdAt DESC",
@@ -13,7 +13,7 @@ exports.getAllPapers = (req, res, next) => {
     }
   );
 };
-// Créer un paper //
+// On crée un nouvel article //
 exports.newPaper = (req, res, next) => {
   const imgUrl =
     "file" in req
@@ -32,7 +32,7 @@ exports.newPaper = (req, res, next) => {
     }
   );
 };
-// Afficher un paper //
+// On affiche un article //
 exports.getOnePaper = (req, res, next) => {
   db.query(
     "SELECT p.*, u.username FROM groupomania.papers p inner join groupomania.users u on u.id = p.owner_id WHERE p.id = ?",
@@ -41,12 +41,12 @@ exports.getOnePaper = (req, res, next) => {
       if (error) {
         return res.status(400).json({ error });
       }
-      //console.log(result);
+    
       return res.status(200).json(result);
     }
   );
 };
-// Effacer un paper//
+// On efface un article//
 exports.deleteOnePaper = (req, res, next) => {
   db.query(
     "DELETE FROM groupomania.papers WHERE id = ?",
@@ -59,7 +59,7 @@ exports.deleteOnePaper = (req, res, next) => {
     }
   );
 };
-// Modifier le paper utilisateur //
+// On modifie l'article si on est l'utilisateur //
 exports.modifyOnePaper = (req, res, next) => {
   db.query(
     `UPDATE groupomania.papers SET content = ? WHERE id = ?`,
@@ -72,7 +72,7 @@ exports.modifyOnePaper = (req, res, next) => {
     }
   );
 };
-// Afficher les papers d'un utilisateur //
+
 exports.getUserPapers = (req, res, next) => {
   db.query(
     `SELECT * FROM groupomania.papers WHERE owner_id = ?`,
@@ -81,7 +81,7 @@ exports.getUserPapers = (req, res, next) => {
       if (error) {
         return res.status(400).json({ error });
       }
-      //console.log(result);
+      
       return res.status(200).json(result);
     }
   );

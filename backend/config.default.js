@@ -1,3 +1,4 @@
+//Il faut créer le dossier "config.js" sur ce modèle//
 module.exports = {
   DATABASE_CONFIG: {
     host: "localhost",
