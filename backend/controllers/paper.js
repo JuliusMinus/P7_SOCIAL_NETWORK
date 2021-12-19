@@ -41,7 +41,7 @@ exports.getOnePaper = (req, res, next) => {
       if (error) {
         return res.status(400).json({ error });
       }
-      console.log(result);
+      //console.log(result);
       return res.status(200).json(result);
     }
   );
@@ -81,7 +81,7 @@ exports.getUserPapers = (req, res, next) => {
       if (error) {
         return res.status(400).json({ error });
       }
-      console.log(result);
+      //console.log(result);
       return res.status(200).json(result);
     }
   );

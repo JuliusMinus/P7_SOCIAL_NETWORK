@@ -2,11 +2,14 @@ const db = require("../models/DataBase.js");
 
 // Création de nouveaux com //
 exports.newComment = (req, res, next) => {
+  var queryParams = [req.body.content, req.body.userId, req.params.id];
+  console.info({ queryParams });
   db.query(
-    `INSERT INTO groupomania.comments VALUES (null,?, NOW(), ?, ?)`,
-    [req.body.content, req.body.userId, req.params.id],
+    `INSERT INTO groupomania.comments(text, createdAt, owner_id, paper_id) VALUES (?, NOW(), ?, ?)`,
+    queryParams,
     (error, result, field) => {
       if (error) {
+        console.log(error);
         return res.status(400).json({ error });
       }
       return res.status(200).json(result);

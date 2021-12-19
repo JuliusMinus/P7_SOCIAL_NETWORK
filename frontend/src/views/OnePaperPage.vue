@@ -1,23 +1,36 @@
 <template >
   <div class="paper">
     <div class="card-paper">
-    <Paper :paper="paper" :btnComment="false" />
+      <Paper :paper="paper" :btnComment="false" />
 
-    <button id="btn-delete" class="btn btn-warning" v-if="canDeletePaper()" @click="deletePaper">
-      Supprimer la publication
-    </button>
+      <button
+        id="btn-delete"
+        class="btn btn-warning"
+        v-if="canDeletePaper()"
+        @click="deletePaper"
+      >
+        Supprimer la publication
+      </button>
     </div>
     <form @submit.prevent="sendComment">
-      <input class="form-control input-lg"
+      <input
+        class="form-control input-lg"
         name="content"
         id="commentcontent"
         type="text"
         placeholder="Commentez ici..."
       />
-      <button class="btn btn-info" type="submit">Publiez votre commentaire</button>
+      <button class="btn btn-info" type="submit">
+        Publiez votre commentaire
+      </button>
     </form>
 
-    <Comment v-for="comment in comments" :key="comment.id" :comment="comment" />
+    <Comment
+      v-for="comment in comments"
+      :key="comment.id"
+      :comment="comment"
+      @askDelete="deleteComment"
+    />
     <p v-if="comments.length == 0">Aucun commentaire pour le moment</p>
   </div>
 </template>
@@ -86,9 +99,26 @@ export default {
           "Content-type": "application/json",
           Authorization: `Bearer ` + sessionStorage.getItem("token"),
         },
-      }).then(() => {
-        this.loadComments();
+      }).then((resp) => {
+        if (resp.status < 300) {
+          this.loadComments();
+        }
       });
+    },
+    deleteComment(comment) {
+      console.log("Ask delete ", comment);
+      fetch(`http://localhost:3000/api/comments/${comment.id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ` + sessionStorage.getItem("token"),
+        },
+      })
+        .then((res) => res.json)
+        .then((data) => {
+          console.log("deleted ", data);
+          this.loadComments();
+        });
     },
     // method qui efface le post
     deletePaper() {
@@ -117,14 +147,9 @@ export default {
   width: 100%;
 }
 
-.btn-delete{
-
+.btn-delete {
   display: flex;
   justify-content: center;
-  width:50%;
+  width: 50%;
 }
-
-
-  
-
 </style>

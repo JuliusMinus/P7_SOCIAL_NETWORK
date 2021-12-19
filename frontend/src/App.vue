@@ -18,7 +18,9 @@
         /></router-link>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item active"></li>
-          <a class="nav-link" href="#">Se déconnecter</a>
+          <a class="nav-link" @click="logout()" v-if="isConnected()"
+            >Se déconnecter</a
+          >
           <li class="nav-item"></li>
         </ul>
       </div>
@@ -27,6 +29,24 @@
     <router-view />
   </div>
 </template>
+
+<script>
+export default {
+  name: "App",
+  methods: {
+    isConnected() {
+      return sessionStorage.getItem("token") !== null;
+    },
+    logout() {
+      sessionStorage.removeItem("email");
+      sessionStorage.removeItem("username");
+      sessionStorage.removeItem("userId");
+      sessionStorage.removeItem("token");
+      window.location.href = "#/";
+    },
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
