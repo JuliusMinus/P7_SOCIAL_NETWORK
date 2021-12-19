@@ -6,6 +6,8 @@
 
 <script>
 
+// import des components//
+
 import AddPaper from "@/components/AddPaper.vue";
 
 export default {

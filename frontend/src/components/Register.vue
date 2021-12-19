@@ -1,3 +1,5 @@
+<!--Code pour la page...-->
+
 <template>
   <div class="register">
     <form @submit.prevent="register()">

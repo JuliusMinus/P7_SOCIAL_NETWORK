@@ -1,3 +1,5 @@
+<!--Code pour la page...-->
+
 <template>
   <div class="forum">
     <h1>Voir tous les articles</h1>

@@ -1,3 +1,5 @@
+<!--Code pour la page...-->
+
 <template>
   <div class="formulaire">
     <h1>Formulaire de Connexion</h1>

@@ -1,3 +1,5 @@
+//Toutes les routes entre les components et les views//
+
 import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import RegisterPage from "../views/RegisterPage.vue";

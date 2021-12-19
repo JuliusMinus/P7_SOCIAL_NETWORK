@@ -5,6 +5,9 @@
 </template>
 
 <script>
+
+// import des components//
+
 import Register from "@/components/Register.vue";
 
 export default {

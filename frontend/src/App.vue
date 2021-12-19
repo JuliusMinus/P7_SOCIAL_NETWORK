@@ -33,6 +33,7 @@
 <script>
 export default {
   name: "App",
+  //Méthode pour se désinscire//
   methods: {
     isConnected() {
       return sessionStorage.getItem("token") !== null;

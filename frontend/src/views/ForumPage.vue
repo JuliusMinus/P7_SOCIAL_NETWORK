@@ -5,6 +5,9 @@
 </template>
 
 <script>
+
+// import des components// 
+
 import Forum from "@/components/Forum.vue";
 
 export default {

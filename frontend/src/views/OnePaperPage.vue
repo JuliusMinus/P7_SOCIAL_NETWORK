@@ -36,7 +36,9 @@
 </template>
 
 <script>
-// import des components
+
+// import des components//
+
 import Paper from "../components/Paper.vue";
 import Comment from "../components/Comment.vue";
 

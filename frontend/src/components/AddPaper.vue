@@ -1,3 +1,5 @@
+<!--Code pour la page...-->
+
 <template>
   <div>
     <form @submit="(e) => e.preventDefault()" class="newpaper">
