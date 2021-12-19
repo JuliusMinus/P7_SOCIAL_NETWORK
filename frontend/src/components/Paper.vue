@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <div class="card">
+  <div class="card">
+    
+      <div class="image">
       <img :src="paper.img" class="card-img-left" alt="photo de l'article"/>
+      </div>
       <div class="card-body">
         <p class="card-text">{{ paper.username }}/{{ paper.createdAt }}</p>
         <h5 class="card-title">{{ paper.content }}</h5>
@@ -9,9 +11,9 @@
           v-if="btnComment"
           class="btn btn-primary"
           :to="{ name: 'OnePaperPage', params: { id: paper.id } }"
-          >Voir l'article</router-link
-        >
-      </div>
+          >Voir l'article
+          </router-link>
+     
     </div>
   </div>
 </template>
@@ -49,7 +51,7 @@ export default {
 }
 
 .card-body {
-  width: 50px;
+  width: 100px;
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -58,9 +60,8 @@ export default {
   }
 
   .card-img-left {
-   max-width:200px;
+   max-width:150px;
    height: auto;
-  
    border-radius: 15px;
   }
 

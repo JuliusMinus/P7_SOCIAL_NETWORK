@@ -111,4 +111,29 @@ export default {
   justify-content: center;
   align-items: center;
 }
+#registerpage-mail {
+  border-width: 2px;
+  border-color: rgb(185, 213, 255);
+  box-shadow: 0px 0px 2px 2px rgb(185, 213, 255);
+}
+
+#registerpage-pseudo {
+  border-width: 2px;
+  border-color: rgb(185, 213, 255);
+  box-shadow: 0px 0px 2px 2px rgb(185, 213, 255);
+}
+
+#registerpage-password {
+  border-width: 2px;
+  border-color: rgb(185, 213, 255);
+  box-shadow: 0px 0px 2px 2px rgb(185, 213, 255);
+}
+
+#registerpage-passwordcheck {
+  border-width: 2px;
+  border-color: rgb(185, 213, 255);
+  box-shadow: 0px 0px 2px 2px rgb(185, 213, 255);
+}
+
+
 </style>

@@ -36,6 +36,6 @@ export default {
   margin-bottom: 15px;
   border-width: 3px;
   border-color: rgb(185, 213, 255);
-   box-shadow: 0px 0px 2px 2px rgb(185, 213, 255);
+  box-shadow: 0px 0px 2px 2px rgb(185, 213, 255);
 }
 </style>

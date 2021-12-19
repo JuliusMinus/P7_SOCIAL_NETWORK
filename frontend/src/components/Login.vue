@@ -83,12 +83,26 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 }
 form {
-  width: 400px;
+  width: 300px;
+  
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 25px;
+}
+
+#InputEmail{
+  border-width: 3px;
+  border-color: rgb(185, 213, 255);
+  box-shadow: 0px 0px 2px 2px rgb(185, 213, 255);
+}
+
+#InputPassword{
+  border-width: 3px;
+  border-color: rgb(185, 213, 255);
+  box-shadow: 0px 0px 2px 2px rgb(185, 213, 255);
 }
 </style>
