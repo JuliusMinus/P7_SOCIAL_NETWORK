@@ -1,4 +1,4 @@
-<!--Code pour la page...-->
+
 
 <template>
   <div>

@@ -19,13 +19,18 @@
             alt="logo groupomania"
           />
         </router-link>
+
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <a class="nav-link" @click="logout()" v-if="isConnected()"
-            >Se déconnecter</a
-          >
-          <a class="nav-link" @click="deleteAccount()" v-if="isConnected()"
-            >Supprimer mon compte</a
-          >
+          <router-link to="#/forum" class="navbar-brand">
+            <a class="nav-link" @click="logout()" v-if="isConnected()"
+              >Se déconnecter</a
+            >
+          </router-link>
+          <router-link to="#/forum" class="navbar-brand">
+            <a class="nav-link" @click="deleteAccount()" v-if="isConnected()"
+              >Supprimer mon compte</a
+            >
+          </router-link>
         </ul>
       </div>
     </nav>
@@ -63,14 +68,13 @@ export default {
       )
         .then((res) => res.json())
         .then((data) => {
-          if(data.status == 'ok'){
-          sessionStorage.removeItem("email");
-          sessionStorage.removeItem("username");
-          sessionStorage.removeItem("userId");
-          sessionStorage.removeItem("token");
-          window.location.href = "#/";
+          if (data.status == "ok") {
+            sessionStorage.removeItem("email");
+            sessionStorage.removeItem("username");
+            sessionStorage.removeItem("userId");
+            sessionStorage.removeItem("token");
+            window.location.href = "#/";
           }
-          
         });
     },
   },
@@ -88,6 +92,7 @@ export default {
 #navbarTogglerDelo01 {
   height: 30px;
 }
+
 .navbar-brand {
   img {
     width: 300px;
